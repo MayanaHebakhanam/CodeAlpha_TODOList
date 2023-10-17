@@ -1,6 +1,6 @@
 const inputBox=document.getElementById("input-txt");
 const listContainer=document.getElementById("list-container");
-let inputTxt;
+
 
 function addTask(){
     if(inputBox.value == ''){
@@ -10,7 +10,7 @@ function addTask(){
         let li=document.createElement("li");
         listContainer.appendChild(li);
 
-        inputTxt=document.createElement("input");
+        const inputTxt=document.createElement("input");
         inputTxt.type="text";
         inputTxt.classList.add('text');
         inputTxt.value=inputBox.value;
@@ -31,7 +31,6 @@ function addTask(){
                 icon.classList.add("save");
                 inputTxt.removeAttribute("readonly");
                 inputTxt.focus();
-
                 }
             else{
                 icon.classList.remove("save");
@@ -39,7 +38,6 @@ function addTask(){
                 icon.classList.remove("glyphicon-save");
                 icon.classList.add("glyphicon-edit");
                 inputTxt.setAttribute("readonly","readonly");
-
             }
 
         }, false);
@@ -50,6 +48,7 @@ function addTask(){
     }
     inputBox.value="";
     saveData();
+
 }
 
 listContainer.addEventListener("click", function(e){
@@ -66,13 +65,13 @@ listContainer.addEventListener("click", function(e){
 
 
 function saveData(){
-    localStorage.setItem("Saved-Data",listContainer.innerHTML);
+    localStorage.setItem("Saved_Data",listContainer.innerHTML);
 
 }
 
 function showData(){
-    listContainer.innerHTML=localStorage.getItem("Saved-Data");
+    listContainer.innerHTML=localStorage.getItem("Saved_Data");
+    
 }
-
 
 showData();
